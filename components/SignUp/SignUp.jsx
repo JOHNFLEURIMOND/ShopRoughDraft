@@ -27,7 +27,7 @@ const FantasyFootballRanking = () => {
               .required('Your Last Name Is Required!')
               .min(2, 'Your Last Name Needs To Be Valid'),
             email: yup.string().email().required('Your Email Is Required!'),
-            password: yup.string().required('Your Password Is Required!'),
+            password: yup.string().required('Your Password Is Required!').min(4, 'Your Password Needs To Be Valid'),
           })}
           onSubmit={(values, actions) => {
             setTimeout(() => {
@@ -66,7 +66,6 @@ const FantasyFootballRanking = () => {
             handleChange,
           }) => (
             <Form onSubmit={handleSubmit}>
-              <label htmlFor='firstName'>First Name</label>
               <TextInput
                 id='firstName'
                 name='firstName'
@@ -78,7 +77,6 @@ const FantasyFootballRanking = () => {
               {errors.firstName && touched.firstName ? (
                 <div>{errors.firstName}</div>
               ) : null}
-              <label htmlFor='lastName'>Last Name</label>
               <TextInput
                 id='lastName'
                 name='lastName'
@@ -90,7 +88,6 @@ const FantasyFootballRanking = () => {
               {errors.lastName && touched.lastName ? (
                 <div>{errors.firstName}</div>
               ) : null}
-              <label htmlFor='email'>Email</label>
               <TextInput
                 id='email'
                 name='email'
@@ -101,15 +98,14 @@ const FantasyFootballRanking = () => {
                 type='email'
               />
               {errors.email && touched.email ? <div>{errors.email}</div> : null}
-              <label htmlFor='password'>Password</label>
               <TextInput
                 id='password'
                 name='password'
+                type="password" 
                 placeholder='Password'
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type='password'
               />
               {errors.password && touched.password ? (
                 <div>{errors.password}</div>

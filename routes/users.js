@@ -28,7 +28,6 @@ users.post('/users', (req, res) => {
     created: today,
   };
 
-  
   User.findOne({
     where: {
       email: req.body.email,
@@ -98,5 +97,6 @@ users.get('/users', (req, res) => {
       res.send('error: ' + err);
     });
 });
+
 
 module.exports = users;

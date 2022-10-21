@@ -11,6 +11,7 @@ require("dotenv").config();
 const User = require("./models/User");
 var moment = require("moment");
 const rightNow = moment().format("MMMM Do YYYY, h:mm:ss a");
+const cookieParser = require('cookie-parser');
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +21,8 @@ app.use(
     extended: true
   })
 );
+app.use(cookieParser());
+
 
 app.get("/", (req, res) =>
   res.status(200).send({
@@ -42,17 +45,7 @@ User.sync()
     console.log("Not Getting User Table😒 😒 😒 😒👎 📉 ... JF  " + err)
   );
 
-exports.createUser = async ({ name }) => {
-  return await User.create({ name });
-};
-exports.findAll = async () => {
-  return await User.findAll();
-};
-exports.getUser = async obj => {
-  return await User.findOne({
-    where: obj
-  });
-};
+
 
 app.get("*", (req, res) => {
   db.getAllUsers().then(user => res.json(user));
@@ -66,7 +59,7 @@ app.post("/users", (req, res) => {
     password: req.body.password,
     created: rightNow
   };
-  db.create({ userData }).then(user =>
+  db.createUser({ userData }).then(user =>
     res.json({ user, message: "Email sent!" })
   );
 });
