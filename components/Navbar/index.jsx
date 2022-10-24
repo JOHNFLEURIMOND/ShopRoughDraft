@@ -109,13 +109,13 @@ export const Menu = ({ open }) => {
       </MenuItem>
 
       <MenuItem>
-        <MenuLink to='/WeeklyProjections' aria-label='Weekly Projections'>
-          Weekly Projections
+        <MenuLink to='/LoginPage' aria-label='Login Page'>
+          Login
         </MenuLink>
       </MenuItem>
       <MenuItem>
-        <MenuLink to='/PPR' aria-label='PPR'>
-          PPR
+        <MenuLink to='/Shop' aria-label='Shop Page'>
+          ShopPage
         </MenuLink>
       </MenuItem>
     </StyledMenu>
@@ -124,8 +124,8 @@ export const Menu = ({ open }) => {
 
 export const StyledBurger = styled.button`
   position: absolute;
-  top: 5%;
-  left: 2rem;
+  top: 2%;
+  left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

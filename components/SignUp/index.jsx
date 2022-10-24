@@ -4,7 +4,7 @@ import { Button, Input } from 'semantic-ui-react';
 
 export const MainContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 800px;
   box-sizing: border-box;
   font-size: 1rem;
   text-align: center;
@@ -13,16 +13,13 @@ export const MainContainer = styled.div`
   padding: 2em 15em;
   line-height: normal;
   background-color: ${fleurimondColors.white};
-  padding: 64px 250px;
 
   @media (min-width: 800px) {
     box-sizing: border-box;
     margin: 0;
-    padding: 64px 250px;
   }
   @media (min-width: 200px) {
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
     margin: 0;
   }

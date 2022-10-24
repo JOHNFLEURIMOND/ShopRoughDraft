@@ -9,8 +9,13 @@ export const MainContainer = styled.div`
   font-size: 1rem;
   text-align: center;
   font-weight: 500;
-  margin: 0;
-  padding: 64px 250px;
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header header header'
+    'main main main main'
+    'footer footer footer footer';
 
   line-height: normal;
   background-color: ${fleurimondColors.white};

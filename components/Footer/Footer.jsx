@@ -7,6 +7,7 @@ import {
   MenuItem,
   MenuLink,
   MenuIcon,
+  CoffeeFooter,
 } from './index';
 
 const JFFooter = () => {
@@ -18,19 +19,21 @@ const JFFooter = () => {
   const handleClick = () => setClick(!click);
 
   return (
-    <Footer>
-      <Menu onClick={handleClick} click={click}>
-        <FooterLogo to='/'>
-          <MenuIcon />
-          ?????? '22
-        </FooterLogo>
-        <MenuItem>
-          <MenuLink onClick={handleClick} to='/'>
-            {moment().format('llll')}
-          </MenuLink>
-        </MenuItem>
-      </Menu>
-    </Footer>
+    <>
+      <Footer>
+        <Menu onClick={handleClick} click={click}>
+          <FooterLogo to='/'>
+            <MenuIcon />
+            ?????? '22
+          </FooterLogo>
+          <MenuItem>
+            <MenuLink onClick={handleClick} to='/'>
+              {moment().format('llll')}
+            </MenuLink>
+          </MenuItem>
+        </Menu>
+      </Footer>
+    </>
   );
 };
 

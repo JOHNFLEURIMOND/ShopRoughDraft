@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fleurimondColors } from '../../utils/theme.js';
-import img from '../../public/fantasyfootball.jpeg';
+import img from '../../public/HC.jpeg';
 
 export const MainHero = styled.div`
   background-position: center;

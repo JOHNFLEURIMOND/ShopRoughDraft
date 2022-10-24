@@ -27,7 +27,10 @@ const FantasyFootballRanking = () => {
               .required('Your Last Name Is Required!')
               .min(2, 'Your Last Name Needs To Be Valid'),
             email: yup.string().email().required('Your Email Is Required!'),
-            password: yup.string().required('Your Password Is Required!').min(4, 'Your Password Needs To Be Valid'),
+            password: yup
+              .string()
+              .required('Your Password Is Required!')
+              .min(4, 'Your Password Needs To Be Valid'),
           })}
           onSubmit={(values, actions) => {
             setTimeout(() => {
@@ -70,6 +73,7 @@ const FantasyFootballRanking = () => {
                 id='firstName'
                 name='firstName'
                 placeholder='First Name'
+                type='text'
                 value={values.firstName}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -80,6 +84,7 @@ const FantasyFootballRanking = () => {
               <TextInput
                 id='lastName'
                 name='lastName'
+                type='text'
                 placeholder='Last Name'
                 value={values.lastName}
                 onChange={handleChange}
@@ -101,7 +106,7 @@ const FantasyFootballRanking = () => {
               <TextInput
                 id='password'
                 name='password'
-                type="password" 
+                type='password'
                 placeholder='Password'
                 value={values.password}
                 onChange={handleChange}

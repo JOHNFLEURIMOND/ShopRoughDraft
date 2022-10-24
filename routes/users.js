@@ -24,7 +24,7 @@ users.post('/users', (req, res) => {
   const userData = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    email: req.body.confirmEmail,
+    email: req.body.email,
     created: today,
   };
 
@@ -33,14 +33,14 @@ users.post('/users', (req, res) => {
       email: req.body.email,
     },
   })
-    //TODO bcrypt
+    // bcrypt
     .then(user => {
       if (!user) {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           userData.password = hash;
           User.create(userData)
             .then(user => {
-              res.json({ status: user.email + 'Registered!' });
+              res.json({ status: user.email + ' Registered!' });
             })
             .catch(err => {
               res.send('error: ' + err);

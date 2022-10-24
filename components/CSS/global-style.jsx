@@ -40,6 +40,8 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
 
   }
+
+  
   ol, ul {
     list-style: none;
   }
@@ -91,19 +93,15 @@ export const Container = styled.div`
   padding: 0;
   width: 100%;
   height: 100%
-  display: flex;
+  display: grid;
+grid-template-columns: 150px 150px 150px;
+grid-template-rows: auto;
+grid-template-areas: 
+  "header header header header"
+  "main main main main"
+  "footer footer footer footer";
   
   @media (max-width: 400px) {
-    padding: 0;
-  }
-  @media (max-width: 991px) {
-    padding: 0;
-  }
-  @media (min-width: 1500px) {
-    max-width: 1500px;
-  }
-  @media (min-width: 1800px) {
-    max-width: 100%;
     padding: 0;
   }
 `;

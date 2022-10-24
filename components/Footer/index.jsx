@@ -1,23 +1,37 @@
+import React, { useState } from 'react';
+import moment from 'moment';
 import { Container } from '../CSS/global-style';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import { fleurimondColors } from '../../utils/theme.js';
+import img from '../../public/coffeeFooter.png';
 
 export const Footer = styled.footer`
   width: 100%;
   height: 80px;
+  background-color: ${fleurimondColors.coffee};
   box-sizing: border-box;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
   font-size: 1.4rem;
-  background: ${fleurimondColors.midnight};
   padding: 0.5rem calc((100vw - 1000px) / 2);
   overflow: hidden;
 `;
 
+export const CoffeeFooter = styled.div`
+width: 100%;
+height: 500px;
+box-sizing: border-box;
+display: block;
+overflow: hidden;
+  background-image: url(${img});
+  z-index: -99999999;
+  background-repeat-x: no-repeat;
+  background-size: cover;
+}
+`;
 export const FooterContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
@@ -66,7 +80,7 @@ export const Menu = styled.ul`
   justify-content: space-around;
   margin: 2%;
   liststyle: none;
-
+  grid-area: footer;
   @media only screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;
@@ -75,7 +89,6 @@ export const Menu = styled.ul`
     position: absolute;
     top: 80px;
     left: ${({ click }) => (click ? '0' : '-100%')};
-    background-color: ${fleurimondColors.midnight};
     transition: all 0.5s ease;
   }
 `;

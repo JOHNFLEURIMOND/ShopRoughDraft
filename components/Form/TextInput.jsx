@@ -9,7 +9,7 @@ export default function TextInput(props) {
       <StyledInput
         name={props.name}
         placeholder={props.placeholder}
-        type='text'
+        type={props.type}
         value={props.value}
         onChange={props.onChange}
       />

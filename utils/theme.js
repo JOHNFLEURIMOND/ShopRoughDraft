@@ -5,7 +5,7 @@ const fleurimondColors = {
   lightSmoke: '#dae0e5',
   white: '#ffffff',
   haitianGold: '#d4af37',
-  me: '#4c3e10',
+  coffee: '#331c11',
   trueBlack: '#000000',
   woooRed: '#ff0000',
   infrared: '#eb3745',
