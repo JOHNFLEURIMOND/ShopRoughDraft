@@ -35,7 +35,7 @@ const FantasyFootballRanking = () => {
           onSubmit={(values, actions) => {
             setTimeout(() => {
               axios
-                .post('http://localhost:8080/users/users', values, actions) // no try/catch here
+                .post('http://localhost:8080/users', values, actions) // no try/catch here
                 .then(response => {
                   console.log(response);
                 })

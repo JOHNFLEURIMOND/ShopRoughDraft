@@ -22,13 +22,29 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use("/users", Users);
 
+if (process.env.NODE_ENV === "production") {
+  // Exprees will serve up production assets
+  app.use(express.static("/build/index.html"));
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve("/build/index.html"));
+  });
+}
+
+app.listen(PORT, () => {
+  console.log(`Our app is running on port ${PORT}`);
+});
 
 app.get("/", (req, res) =>
   res.status(200).send({
     message: "Welcome to the beginning of nothingness."
   })
 );
+
 db.authenticate()
   .then(() => console.log("Database is connected 💯 💯 💯 😀👍 📈... JF"))
   .catch(err =>
@@ -45,38 +61,3 @@ User.sync()
     console.log("Not Getting User Table😒 😒 😒 😒👎 📉 ... JF  " + err)
   );
 
-
-
-app.get("*", (req, res) => {
-  db.getAllUsers().then(user => res.json(user));
-});
-
-app.post("/users", (req, res) => {
-  const userData = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-    created: rightNow
-  };
-  db.createUser({ userData }).then(user =>
-    res.json({ user, message: "Email sent!" })
-  );
-});
-
-app.use("/users", Users);
-
-if (process.env.NODE_ENV === "production") {
-  // Exprees will serve up production assets
-  app.use(express.static("/app/index.html"));
-
-  // Express serve up index.html file if it doesn't recognize route
-  const path = require("path");
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve("/app/index.html"));
-  });
-}
-
-app.listen(PORT, () => {
-  console.log(`Our app is running on port ${PORT}`);
-});

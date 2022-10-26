@@ -6,20 +6,22 @@ const users = express.Router();
 const jwt = require('jsonwebtoken');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
-
 const User = require('../models/User');
+
 users.use(cors());
 
 process.env.SECRET_KEY = 'secret';
-users.get('/', (req, res) => 
-User.findAll()
-    .then(users => res.render('User', {
-        users
-      }))
-    .catch(err => console.log(err)));
 
-users.post('/users', (req, res) => {
+//getall users and display json to localhost:8080/users
+users.get('/', (req, res) => {
+ User.findAll()
+    .then(users => res.json({
+      users
+    }))
+    .catch(err => console.log(err))
+  });
+//Create user row in table.
+users.post('/', (req, res) => {
   const today = new Date();
   const userData = {
     firstName: req.body.firstName,
@@ -55,7 +57,7 @@ users.post('/users', (req, res) => {
     });
 });
 
-users.post('/users', (req, res) => {
+users.post('/', (req, res) => {
   User.findOne({
     where: {
       email: req.body.email,
@@ -65,8 +67,10 @@ users.post('/users', (req, res) => {
       if (user) {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-            expiresIn: 1440,
+            expiresIn: 9000,
           });
+          console.log(token)
+          res.json({ jwt: token })
           res.send(token);
         }
       } else {
@@ -78,7 +82,7 @@ users.post('/users', (req, res) => {
     });
 });
 
-users.get('/users', (req, res) => {
+users.get('/:id', (req, res) => {
   var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY);
 
   User.findOne({
